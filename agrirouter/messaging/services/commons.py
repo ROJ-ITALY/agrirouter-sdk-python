@@ -73,6 +73,7 @@ class MqttMessagingService(AbstractMessagingClient):
     def send(self, parameters, qos: int = 0) -> MessagingResult:
         message_request = self.create_message_request(parameters)
         mqtt_payload = message_request.json_serialize()
+		print(mqtt_payload)
         self.client.publish(
             topic=self.onboarding_response.get_connection_criteria().get_measures(),
             payload=json.dumps(mqtt_payload),
