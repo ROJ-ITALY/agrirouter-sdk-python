@@ -35,6 +35,7 @@ class SoftwareOnboarding(EnvironmentalService):
         #        headers=request.get_header()
         #    )
         #raise RequestNotSigned
+        print(request.get_body_content())
         return requests.post(url=request.get_url(), data=request.get_body_content(), headers=request.get_header())
 
     def verify(self, params: SoftwareOnboardingParameter) -> SoftwareVerifyOnboardingResponse:
