@@ -2,7 +2,7 @@ import json
 from typing import Union, Dict
 
 from agrirouter.messaging.exceptions import WrongFieldError
-from agrirouter.utils.utc_time_util import now_as_utc_str
+from agrirouter.utils.utc_time_util import now_as_utc_timestamp
 
 
 class EncodedMessage:
@@ -36,7 +36,7 @@ class Message:
 
     def __init__(self, content):
         self.content = content
-        self.timestamp = now_as_utc_str()
+        self.timestamp = str(int(now_as_utc_timestamp().timestamp()))
 
     def json_serialize(self) -> dict:
         return {
